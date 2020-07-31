@@ -20,6 +20,12 @@ namespace BinarySearchTreeClass
             {
                 Root = nodeToAdd;
             }
+            else if (Root.key == nodeToAdd.key)
+            {
+                //throw new Exception();
+                Console.WriteLine("Node not added. All Keys must be Unique");
+                return;
+            }
             else
             {
                 AddNode(nodeToAdd, Root);
@@ -36,7 +42,7 @@ namespace BinarySearchTreeClass
                 }
                 AddNode(nodeToAdd, currentNode.leftNode);
             }
-            else if(nodeToAdd.key > currentNode.key)
+            else if (nodeToAdd.key > currentNode.key)
             {
                 if (currentNode.rightNode == null)
                 {
@@ -49,7 +55,7 @@ namespace BinarySearchTreeClass
             {
                 //throw new Exception();
                 Console.WriteLine("Node not added. All Keys must be Unique");
-            
+
             }
         }
         public Node Search(Node nodeToSearch)
@@ -63,7 +69,7 @@ namespace BinarySearchTreeClass
         }
         public Node Search(int key)
         {
-            if(Root.key == key)
+            if (Root.key == key)
             {
                 return Root;
             }
@@ -73,19 +79,18 @@ namespace BinarySearchTreeClass
         // 
         public Node Search(int key, Node nextNode)
         {
-            while (nextNode.leftNode == null || nextNode.rightNode == null)
+
+            if (nextNode.key == key)
             {
-                if (nextNode.key == key)
-                {
-                    return nextNode;
-                }
-                nextNode = nextNode.key > key ? nextNode.leftNode : nextNode.rightNode;
-                return Search(key, nextNode);
+                return nextNode;
             }
-            // BST does not contain Node.
-            return null;
+            nextNode = nextNode.key > key ? nextNode.leftNode : nextNode.rightNode;
+            if (nextNode == null)
+            {
+                // BST does not contain Node.
+                return null;
+            }
+            return Search(key, nextNode);
         }
-
-
     }
 }

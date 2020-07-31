@@ -23,6 +23,7 @@ namespace BinarySearchTreeClass
             Node kangaroo = new Node(175, "Kangaroo");
             Node dinosaur = new Node(42, "Dinosaur");
             bst.AddNode(lion);
+            bst.AddNode(lion);
             bst.AddNode(giraffe);
             bst.AddNode(seal);
             bst.AddNode(monkey);
@@ -30,7 +31,7 @@ namespace BinarySearchTreeClass
             bst.AddNode(buffalo);
             bst.AddNode(kangaroo);
             bst.AddNode(dinosaur);
-
+            bst.AddNode(new Node(40));
 
             Node foundNode;
 
@@ -53,9 +54,15 @@ namespace BinarySearchTreeClass
             foundNode = bst.Search(buffalo);
             Console.WriteLine($"Found Node: {foundNode}");
             Console.WriteLine("----------------------------");
+            
+            Console.WriteLine($"Searching for: {dinosaur}");
+            foundNode = bst.Search(dinosaur);
+            Console.WriteLine($"Found Node: {foundNode}");
+            Console.WriteLine("----------------------------");
 
             Node bird = new Node(12, "Bird");
             Console.WriteLine($"Search for {bird}.\n It has not been added to the list.");
+            foundNode = bst.Search(bird);
             Console.WriteLine($"Found Node: {(foundNode == null ? "NOT FOUND" : foundNode.ToString())}");
 
             Console.ReadLine();
