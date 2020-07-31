@@ -27,8 +27,7 @@ namespace BinarySearchTreeClass
         }
         public void AddNode(Node nodeToAdd, Node currentNode)
         {
-            
-            if (nodeToAdd.key <= currentNode.key)
+            if (nodeToAdd.key < currentNode.key)
             {
                 if (currentNode.leftNode == null)
                 {
@@ -37,7 +36,7 @@ namespace BinarySearchTreeClass
                 }
                 AddNode(nodeToAdd, currentNode.leftNode);
             }
-            else
+            else if(nodeToAdd.key > currentNode.key)
             {
                 if (currentNode.rightNode == null)
                 {
@@ -46,7 +45,47 @@ namespace BinarySearchTreeClass
                 }
                 AddNode(nodeToAdd, currentNode.rightNode);
             }
+            else
+            {
+                //throw new Exception();
+                Console.WriteLine("Node not added. All Keys must be Unique");
+            
+            }
         }
+        public Node Search(Node nodeToSearch)
+        {
+            if (Root.key == nodeToSearch.key)
+            {
+                return Root;
+            }
+            Node nextNode = Root.key > nodeToSearch.key ? Root.leftNode : Root.rightNode;
+            return Search(nodeToSearch.key, nextNode);
+        }
+        public Node Search(int key)
+        {
+            if(Root.key == key)
+            {
+                return Root;
+            }
+            Node nextNode = Root.key > key ? Root.leftNode : Root.rightNode;
+            return Search(key, nextNode);
+        }
+        // 
+        public Node Search(int key, Node nextNode)
+        {
+            while (nextNode.leftNode == null || nextNode.rightNode == null)
+            {
+                if (nextNode.key == key)
+                {
+                    return nextNode;
+                }
+                nextNode = nextNode.key > key ? nextNode.leftNode : nextNode.rightNode;
+                return Search(key, nextNode);
+            }
+            // BST does not contain Node.
+            return null;
+        }
+
 
     }
 }

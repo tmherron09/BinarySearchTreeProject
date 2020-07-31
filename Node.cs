@@ -26,7 +26,10 @@ namespace BinarySearchTreeClass
             this.data = data;
         }
 
-
+        public override string ToString()
+        {
+            return $"Node Key: {key}    Value: {data}";
+        }
 
 
         // For Easier Debugger
