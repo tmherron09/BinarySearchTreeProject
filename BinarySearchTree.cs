@@ -55,7 +55,6 @@ namespace BinarySearchTreeClass
             {
                 //throw new Exception();
                 Console.WriteLine("Node not added. All Keys must be Unique");
-
             }
         }
         public Node Search(Node nodeToSearch)
@@ -76,7 +75,6 @@ namespace BinarySearchTreeClass
             Node nextNode = Root.key > key ? Root.leftNode : Root.rightNode;
             return Search(key, nextNode);
         }
-        // 
         public Node Search(int key, Node nextNode)
         {
 

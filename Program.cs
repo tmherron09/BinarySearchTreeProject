@@ -11,9 +11,23 @@ namespace BinarySearchTreeClass
         static void Main(string[] args)
         {
             Random rng = new Random();
-            
+
             BinarySearchTree bst = new BinarySearchTree();
 
+            //RunBinaryTreeTest(bst);
+            //Console.ReadLine();
+            //Console.Clear();
+
+            BinarySearchTree bstRng = new BinarySearchTree();
+            AddRandomNodes(bstRng, 100, rng);
+
+
+
+            Console.ReadLine();
+        }
+
+        public static void RunBinaryTreeTest(BinarySearchTree bst)
+        {
             Node lion = new Node(100, "Lion");
             Node giraffe = new Node(50, "Giraffe");
             Node seal = new Node(150, "Seal");
@@ -54,7 +68,7 @@ namespace BinarySearchTreeClass
             foundNode = bst.Search(buffalo);
             Console.WriteLine($"Found Node: {foundNode}");
             Console.WriteLine("----------------------------");
-            
+
             Console.WriteLine($"Searching for: {dinosaur}");
             foundNode = bst.Search(dinosaur);
             Console.WriteLine($"Found Node: {foundNode}");
@@ -63,19 +77,16 @@ namespace BinarySearchTreeClass
             Node bird = new Node(12, "Bird");
             Console.WriteLine($"Search for {bird}.\n It has not been added to the list.");
             foundNode = bst.Search(bird);
-            Console.WriteLine($"Found Node: {(foundNode == null ? "NOT FOUND" : foundNode.ToString())}");
-
-            Console.ReadLine();
         }
 
-        public void AddRandomNodes(BinarySearchTree bst, int amount, Random rng)
+        public static void AddRandomNodes(BinarySearchTree bst, int amount, Random rng)
         {
             int key = 0;
             for (int i = 0; i < amount; i++)
             {
-                key = rng.Next(0, 201);
+                key = rng.Next(0, 501);
                 char[] data = new char[5];
-                for (int j = 0; j < 6; j++)
+                for (int j = 0; j < 5; j++)
                 {
                     data[j] = Convert.ToChar(rng.Next(65, 92));
                 }
